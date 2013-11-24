@@ -8,7 +8,7 @@ answer=3
 #echo "start the training, make sure you extracted the variables first using cmsRun VariableExtractor_LR_cfg.py (usually QCD events are used)"
 #
 ##!/bin/sh
-path_to_rootfiles=/user/pvmulder/NewEraOfDataAnalysis/BTagServiceWork/CMSSW_5_3_4_patch1/src/RootFiles_QCDhighpT_53X/
+path_to_rootfiles=/afs/cern.ch/work/p/pvmulder/public/BTagging/RootFiles_QCDhighpT_53X/
 prefix=CombinedSV
 Combinations="NoVertex_B_DUSG NoVertex_B_C PseudoVertex_B_DUSG PseudoVertex_B_C RecoVertex_B_DUSG RecoVertex_B_C"
 CAT="Reco Pseudo No"
@@ -28,29 +28,7 @@ echo "Filling the 2D pt/eta histograms"
 g++ ../histoJetEtaPt.cpp `root-config --cflags --glibs` -o histos
 ./histos $path_to_rootfiles $prefix
 
-
 echo "Calculating the pt/eta weights"
-
-#g++ ../fitJetEtaPt.cpp `root-config --cflags --glibs` -o fitter
-#mkdir weights
-#for i in $CAT ; do
-#	./fitter ${prefix}${i}Vertex_B_C_histo.root
-#  mv out.txt weights/${prefix}${i}Vertex_BC_histo.txt
-#  mv out.root weights/${prefix}${i}Vertex_BC_histo_check.root
-#
-#	./fitter ${prefix}${i}Vertex_B_histo.root ${prefix}${i}Vertex_C_histo.root
-#	mv out.txt weights/${prefix}${i}Vertex_B_C_ratio.txt
-#  mv out.root weights/${prefix}${i}Vertex_B_C_ratio_check.root
-#	
-#	./fitter ${prefix}${i}Vertex_B_DUSG_histo.root 
-#	mv out.txt weights/${prefix}${i}Vertex_BDUSG_histo.txt
-#  mv out.root weights/${prefix}${i}Vertex_BDUSG_histo_check.root
-#
-#	./fitter ${prefix}${i}Vertex_B_histo.root ${prefix}${i}Vertex_DUSG_histo.root
-#	mv out.txt weights/${prefix}${i}Vertex_B_DUSG_ratio.txt
-#  mv out.root weights/${prefix}${i}Vertex_B_DUSG_ratio_check.root
-#done
-
 
 for j in $( ls ../MVATrainer_*cfg.py ) ; do cp $j . ; done
 for j in $( ls MVATrainer_*cfg.py ) ; do
