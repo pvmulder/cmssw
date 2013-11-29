@@ -558,12 +558,30 @@ void JetTagMVATreeTrainer::analyze(const edm::Event& event,
 				// composite full array of MVAComputer values
 				values.resize(2 + variables.size());
 
-				std::vector<Variable::Value>::iterator insert = values.begin();
-		                (insert++)->setValue(target);
-		                (insert++)->setValue(weight);
+//				std::vector<Variable::Value>::iterator insert = values.begin();
+//		                (insert++)->setValue(target);
+//		                (insert++)->setValue(weight);
 
-				std::copy(mvaComputer->iterator(variables.begin()),
-				          mvaComputer->iterator(variables.end()), insert);
+//				std::copy(mvaComputer->iterator(variables.begin()),  mvaComputer->iterator(variables.end()), insert);
+
+
+		values[0].setName("__TARGET__");
+		values[0].setValue(target);
+		values[1].setName("__WEIGHT__");
+		values[1].setValue(weight);
+		
+		int i = 2;
+		for(TaggingVariableList::const_iterator iter = variables.begin(); iter != variables.end(); iter++) 	
+		{
+			
+			values[i].setName(TaggingVariableTokens[iter->first]);
+			values[i].setValue(iter->second);
+		
+			//std::cout << "values name " << values[i].getName() << " has value " << values[i].getValue()  << std::endl;			
+			i++;
+		}
+
+
 
 				static_cast<MVAComputer*>(mvaComputer)->eval(values);
 
