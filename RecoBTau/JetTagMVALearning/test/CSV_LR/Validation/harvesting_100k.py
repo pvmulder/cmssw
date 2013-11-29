@@ -79,8 +79,8 @@ process.CustombTagValidation = process.bTagValidation.clone(
         			endEffPur = cms.double(1.005),
         			startEffPur = cms.double(-0.005)
     				),
-            label = cms.InputTag("combinedSecondaryVertexNNBJetTags"),
-            folder = cms.string("CSVNN")
+            label = cms.InputTag("combinedSecondaryVertexNNBJetTags"), ## RECPLACE
+            folder = cms.string("CSV")
         ) 
 			)
 )
@@ -88,7 +88,7 @@ process.CustombTagValidation = process.bTagValidation.clone(
 process.dqmEnv.subSystemFolder = 'BTAG'
 process.dqmSaver.producer = 'DQM'
 #process.dqmSaver.workflow = '/POG/BTAG/BJETtrained20k_eachptetabin_NewTrackSelection_modified16_tighttracksel'
-process.dqmSaver.workflow = '/POG/BTAG/CSVLR_pregitrecipe'
+process.dqmSaver.workflow = '/POG/BTAG/CSVLR_gitrecipe'
 process.dqmSaver.convention = 'Offline'
 process.dqmSaver.saveByRun = cms.untracked.int32(-1)
 process.dqmSaver.saveAtJobEnd =cms.untracked.bool(True)
