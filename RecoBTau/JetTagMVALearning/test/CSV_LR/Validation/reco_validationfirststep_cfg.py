@@ -30,19 +30,11 @@ process.BTauMVAJetTagComputerRecord = cms.ESSource("PoolDBESSource",
 		record = cms.string('BTauGenericMVAJetTagComputerRcd'),
                 tag = cms.string('MVAJetTags')
 	)),
-	connect = 
-cms.string("sqlite_file:MVAJetTags_pregitrecipe.db"),
+	connect = cms.string("sqlite_file:MVAJetTags.db"),
 	#connect = cms.string('frontier://FrontierDev/CMS_COND_BTAU'),
 	BlobStreamerName = cms.untracked.string('TBufferBlobStreamingService')
 )
 process.es_prefer_BTauMVAJetTagComputerRecord = cms.ESPrefer("PoolDBESSource","BTauMVAJetTagComputerRecord")
-
-#process.load("RecoBTag.SecondaryVertex.combinedSecondaryVertexES_cfi")
-#process.combinedSecondaryVertex.calibrationRecords = cms.vstring(
-#		'CombinedSVRecoVertex', 
-#		'CombinedSVPseudoVertex', 
-#		'CombinedSVNoVertex')
-
 
 from RecoBTag.Configuration.RecoBTag_cff import *
 process.combinedSecondaryVertexNN=process.combinedSecondaryVertex.clone(
@@ -112,12 +104,11 @@ process.myak5JetTracksAssociatorAtVertex = cms.EDProducer("JetTracksAssociatorAt
 
 #new input for impactParameterTagInfos, softleptons
 from RecoBTag.Configuration.RecoBTag_cff import *
-process.btagging = cms.Sequence(impactParameterTagInfos * secondaryVertexTagInfos)
-#process.btagging = cms.Sequence(impactParameterTagInfos * secondaryVertexTagInfos * softMuonTagInfos * softElectronCands * softElectronTagInfos * combinedSecondaryVertexBJetTags)
+process.btagging = cms.Sequence(
+impactParameterTagInfos * 
+secondaryVertexTagInfos)
 
 process.impactParameterTagInfos.jetTracks = cms.InputTag("myak5JetTracksAssociatorAtVertex")
-#softMuonTagInfos.jets = jetID
-#softElectronTagInfos.jets = jetID
 
 process.load("PhysicsTools.JetMCAlgos.CaloJetsMCFlavour_cfi")  
 process.AK5byRef.jets = jetID # replaced by newjetID later
@@ -125,8 +116,7 @@ process.AK5byRef.jets = jetID # replaced by newjetID later
 #do the matching
 process.flavourSeq = cms.Sequence(
     process.myPartons *
-    process.AK5Flavour# *
-#    process.AK5byValAlgo
+    process.AK5Flavour
     )
 
 #select good primary vertex
@@ -165,7 +155,7 @@ process.CustombTagValidation = process.bTagValidation.clone(
         			startEffPur = cms.double(-0.005)
     				),
             label = cms.InputTag("combinedSecondaryVertexNNBJetTags"),
-            folder = cms.string("CSVNN")
+            folder = cms.string("CSV")
         ) 
 			),
       finalizePlots = False,
@@ -182,7 +172,11 @@ process.source = cms.Source("PoolSource",
 )
 
 
-process.btagDQM = cms.Path(process.goodOfflinePrimaryVertices * process.JECAlgo * process.flavourSeq * process.myak5JetTracksAssociatorAtVertex
+process.btagDQM = cms.Path(
+process.goodOfflinePrimaryVertices * 
+process.JECAlgo * 
+process.flavourSeq * 
+process.myak5JetTracksAssociatorAtVertex
  * process.btagging
  * process.combinedSecondaryVertexNNBJetTags
  * process.CustombTagValidation)
