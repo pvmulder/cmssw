@@ -35,8 +35,7 @@ gROOT.SetStyle("Plain")
 
 settingList = [
 								"New (CMSSW_534, CSV LR)", #the CSVV1
-								"New (CMSSW_534, CSV pregit)", #the CSVV1 but in CMSSW_5_3_13_patch3 before git recipe
-								"New (CMSSW_534, CSV git)"#, #the CSVV1 but in CMSSW_5_3_13_patch3 with git recipe Kevin
+								"New (CMSSW_534, CSV git)"#, #the CSVV1 but in CMSSW_5_3_13_patch3 with git recipe 
                ]
 
 #################################################
@@ -50,19 +49,16 @@ path = "/user/gvonsem/BTagServiceWork/MVA/testBtagVal_NewJuly2012/CMSSW_5_3_4_pa
 
 pathList = {
 						"New (CMSSW_534, CSV LR)": "/user/gvonsem/BTagServiceWork/MVA/testBtagVal_NewJuly2012/CMSSW_5_3_4_patch1/src/Validation/RecoB/test_withPFnoPU/INTERACTIVE_validationwithPFnoPU_Fix_Adding2HighPtBins_nonFit-Reweighting/DQM_V0001_R000000001__POG__BTAG__categories.root",
-						"New (CMSSW_534, CSV pregit)": "/user/pvmulder/NewEraOfDataAnalysis/BTagServiceWork/DEVELOPMENT/CMSSW_5_3_4_patch1/src/Validation/DQM_V0001_R000000001__POG__BTAG__CSVLR_pregitrecipe.root",
 						"New (CMSSW_534, CSV git)": "/user/kderoove/bTagging/CMSSW_5_3_13_patch3/src/Validation/RecoB/test/CSV_LR_gitRecipeTest/DQM_V0001_R000000001__POG__BTAG__BJET.root"#,
 						} 
 
 leg = {
 				"New (CMSSW_534, CSV LR)": "CSVV1",
-				"New (CMSSW_534, CSV pregit)": "CSVV1 pregit",
 				"New (CMSSW_534, CSV git)": "CSVV1 git"#,
        }
 
 color = {
 			"New (CMSSW_534, CSV LR)": 1,
-			"New (CMSSW_534, CSV pregit)": 2,
 			"New (CMSSW_534, CSV git)": 8#,
          }
 
@@ -80,16 +76,13 @@ for setting in settingList:
     fileName = pathList[setting]
     file     = TFile.Open(fileName)
     print setting
-    if setting=="New (CMSSW_534, CSV pregit)" :
-       plot1bin     = file.Get("DQMData/Run 1/Btag/Run summary/CSVNN_ETA_0-1v2_PT_90-150/FlavEffVsBEff_DUSG_discr_CSVNN_ETA_0-1v2_PT_90-150")
-       plot1bin_C   = file.Get("DQMData/Run 1/Btag/Run summary/CSVNN_ETA_0-1v2_PT_90-150/FlavEffVsBEff_C_discr_CSVNN_ETA_0-1v2_PT_90-150")
-       plot     = file.Get("DQMData/Run 1/Btag/Run summary/CSVNN_GLOBAL/FlavEffVsBEff_DUSG_discr_CSVNN_GLOBAL")
-       plot_C   = file.Get("DQMData/Run 1/Btag/Run summary/CSVNN_GLOBAL/FlavEffVsBEff_C_discr_CSVNN_GLOBAL")
-    elif setting == "New (CMSSW_534, CSV LR)"   or setting == "New (CMSSW_534, CSV git)":
+    if setting == "New (CMSSW_534, CSV LR)"   or setting == "New (CMSSW_534, CSV git)":
        plot1bin     = file.Get("DQMData/Run 1/Btag/Run summary/CSV_ETA_0-1v2_PT_90-150/FlavEffVsBEff_DUSG_discr_CSV_ETA_0-1v2_PT_90-150")
        plot1bin_C   = file.Get("DQMData/Run 1/Btag/Run summary/CSV_ETA_0-1v2_PT_90-150/FlavEffVsBEff_C_discr_CSV_ETA_0-1v2_PT_90-150")
        plot     = file.Get("DQMData/Run 1/Btag/Run summary/CSV_GLOBAL/FlavEffVsBEff_DUSG_discr_CSV_GLOBAL")
        plot_C   = file.Get("DQMData/Run 1/Btag/Run summary/CSV_GLOBAL/FlavEffVsBEff_C_discr_CSV_GLOBAL")
+		elif
+			print "check path to DQM file or histogram directory and name inside the DQM file"
 		### Set name of plot
     plot1bin.SetName(pathList[setting])
     plot1bin_C.SetName(pathList[setting])
