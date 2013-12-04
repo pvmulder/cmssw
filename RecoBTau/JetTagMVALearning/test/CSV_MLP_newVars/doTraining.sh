@@ -5,6 +5,11 @@ echo "https://twiki.cern.ch/twiki/bin/view/CMS/BTagSoftwareMVATrainer"
 
 echo "ADAPT BIASES IF NECESSARY!!!"
 
+#echo "Calculating the bias: ARE YOU SURE THAT YOU HAVE ENOUGH STATISTICS TO DETERMINE THE BIAS ACCURATELY?"
+#g++ biasForXml.cpp `root-config --cflags --glibs` -o bias
+#./bias $path_to_rootfiles $prefix
+#echo "ARE YOU SURE THAT YOU HAVE ENOUGH STATISTICS TO DETERMINE THE BIAS ACCURATELY?"
+
 answer=6
 
 path_to_rootfiles=/user/pvmulder/NewEraOfDataAnalysis/BTagServiceWork/DEVELOPMENT/CMSSW_5_3_4_patch1/src/CrabJobs_modified1_tightTrackSel/RootFiles/QCD_training/

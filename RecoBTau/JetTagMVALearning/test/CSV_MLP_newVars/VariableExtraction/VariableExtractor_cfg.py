@@ -18,10 +18,52 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 
 process.GlobalTag.globaltag = cms.string("START53_V26::All")
 
-
+##To use the newest training!
+#process.load("CondCore.DBCommon.CondDBSetup_cfi")
+#process.BTauMVAJetTagComputerRecord = cms.ESSource("PoolDBESSource",
+#       process.CondDBSetup,
+#       timetype = cms.string('runnumber'),
+#       toGet = cms.VPSet(cms.PSet(
+#               record = cms.string('BTauGenericMVAJetTagComputerRcd'),
+#               tag = cms.string('MVAJetTags_CMSSW_5_3_4')
+#       )),
+#       connect = cms.string("sqlite_file:MVAJetTags_withPFnoPU_Adding2HighPtBins.db"),
+#       #connect = cms.string('frontier://FrontierDev/CMS_COND_BTAU'),
+#       BlobStreamerName = cms.untracked.string('TBufferBlobStreamingService')
+#)
+#process.es_prefer_BTauMVAJetTagComputerRecord = cms.ESPrefer("PoolDBESSource","BTauMVAJetTagComputerRecord")
 
 #define you jet ID
 jetID = cms.InputTag("ak5PFJets")
+JetCut=cms.string("neutralHadronEnergyFraction < 0.99 && neutralEmEnergyFraction < 0.99 && nConstituents > 1 && chargedHadronEnergyFraction > 0.0 && chargedMultiplicity > 0.0 && chargedEmEnergyFraction < 0.99")
+
+#do the PFnoPU using PF2PAT
+process.out = cms.OutputModule("PoolOutputModule",
+                               outputCommands = cms.untracked.vstring('drop *'),
+                               fileName = cms.untracked.string('EmptyFile.root')
+                               )
+process.load("PhysicsTools.PatAlgos.patSequences_cff")
+from PhysicsTools.PatAlgos.tools.pfTools import *
+postfix="PF2PAT"
+usePF2PAT(process,runPF2PAT=True, jetAlgo="AK5", runOnMC=True, postfix=postfix, pvCollection=cms.InputTag('goodOfflinePrimaryVertices'), typeIMetCorrections=False
+#,jetCorrections=('AK5PFchs', ['L1FastJet','L2Relative','L3Absolute']), pvCollection=cms.InputTag('goodOfflinePrimaryVertices'), typeIMetCorrections=False, outputModules=['out']
+)
+process.patJetCorrFactorsPF2PAT.payload = 'AK5PFchs'
+process.patJetCorrFactorsPF2PAT.levels = cms.vstring(['L1FastJet', 'L2Relative', 'L3Absolute'])
+process.pfPileUpPF2PAT.checkClosestZVertex = False
+process.patJetsPF2PAT.discriminatorSources = cms.VInputTag(
+        cms.InputTag("trackCountingHighEffBJetTagsAODPF2PAT")
+)
+process.btaggingJetTagsAODPF2PAT = cms.Sequence(getattr(process,"trackCountingHighEffBJetTagsAODPF2PAT") )
+# top projections in PF2PAT:
+getattr(process,"pfNoPileUp"+postfix).enable = True
+#applyPostfix(process,"patJetCorrFactors",postfix).payload = cms.string('AK5PFchs')
+#process.pfPileUpPF2PAT.Vertices = cms.InputTag('goodOfflinePrimaryVertices')
+#process.pfPileUpPF2PAT.checkClosestZVertex = cms.bool(False)
+process.selectedPatJetsPF2PAT.cut = JetCut
+process.JECAlgo = cms.Sequence( getattr(process,"patPF2PATSequence"+postfix) )
+
+newjetID=cms.InputTag("selectedPatJetsPF2PAT")
 
 #JTA for your jets
 from RecoJets.JetAssociationProducers.j2tParametersVX_cfi import *
@@ -43,6 +85,8 @@ process.flavourSeq = cms.Sequence(
     process.AK5Flavour
     )
 
+############ the following is now done within PF2PAT
+#
 #select good primary vertex
 from PhysicsTools.SelectorUtils.pvSelector_cfi import pvSelector
 process.goodOfflinePrimaryVertices = cms.EDFilter(
@@ -51,26 +95,6 @@ process.goodOfflinePrimaryVertices = cms.EDFilter(
     src=cms.InputTag('offlinePrimaryVertices')
     )
 
-#for the  use of JEC, could change with time : be careful if recommandations change for the correctors
-#define you sequence like  process.JECAlgo = cms.Sequence(process.ak5PFJetsJEC * process.PFJetsFilter)
-JetCut=cms.string("neutralHadronEnergyFraction < 0.99 && neutralEmEnergyFraction < 0.99 && nConstituents > 1 && chargedHadronEnergyFraction > 0.0 && chargedMultiplicity > 0.0 && chargedEmEnergyFraction < 0.99")
-
-from JetMETCorrections.Configuration.DefaultJEC_cff import *
-process.load("JetMETCorrections.Configuration.JetCorrectionServices_cff")
-process.ak5PFJetsJEC = cms.EDProducer('PFJetCorrectionProducer',
-    src         = cms.InputTag('ak5PFJets'),
-    correctors  = cms.vstring('ak5PFL2L3')
-    )
-
-process.PFJetsFilter = cms.EDFilter("PFJetSelector",
-                            src = cms.InputTag("ak5PFJetsJEC"),
-                            cut = JetCut,
-                            filter = cms.bool(True)
-                            )
-
-
-process.JECAlgo = cms.Sequence(process.ak5PFJetsJEC * process.PFJetsFilter)
-newjetID=cms.InputTag("PFJetsFilter")
 process.myak5JetTracksAssociatorAtVertex.jets = newjetID
 process.AK5byRef.jets                         = newjetID
 
@@ -131,7 +155,13 @@ process.combinedSVMVATrainer = cms.EDAnalyzer("JetTagMVAExtractor",
 )
 
 process.p = cms.Path(
-process.goodOfflinePrimaryVertices * process.JECAlgo * process.myak5JetTracksAssociatorAtVertex * process.impactParameterTagInfos * process.secondaryVertexTagInfos * process.flavourSeq *  process.combinedSVMVATrainer 
+process.goodOfflinePrimaryVertices * 
+process.JECAlgo * 
+process.myak5JetTracksAssociatorAtVertex * 
+process.impactParameterTagInfos * 
+process.secondaryVertexTagInfos * 
+process.flavourSeq *  
+process.combinedSVMVATrainer 
 )
 
  

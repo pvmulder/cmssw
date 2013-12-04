@@ -13,7 +13,7 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 process.load("Configuration.Geometry.GeometryIdeal_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load("Configuration.StandardSequences.Reconstruction_cff")
-process.GlobalTag.globaltag = "START53_V15::All"
+process.GlobalTag.globaltag = "START53_V26::All"
 
 # DQM include
 process.load("Configuration.EventContent.EventContent_cff")
