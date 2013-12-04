@@ -206,17 +206,17 @@ class JetTagMVATreeTrainer : public edm::EDAnalyzer {
 	std::vector<std::string>			fileNames;
 	
 	//TESTING
-	TH1F* h_JetPt;
-	TH1F* h_JetEta;
+//	TH1F* h_JetPt;
+//	TH1F* h_JetEta;
 	
-	TFile* outfile;	
+//	TFile* outfile;	
 	
 	TH2D* histo_B_lin; 
 	TH2D* histo_C_lin;
 	TH2D* histo_DUSG_lin;	
-	TH2D* histo2D_B_reweighted_lin;
-	TH2D* histo2D_C_reweighted_lin;
-	TH2D* histo2D_DUSG_reweighted_lin;
+//	TH2D* histo2D_B_reweighted_lin;
+//	TH2D* histo2D_C_reweighted_lin;
+//	TH2D* histo2D_DUSG_reweighted_lin;
 	
 };
 
@@ -266,10 +266,10 @@ JetTagMVATreeTrainer::JetTagMVATreeTrainer(const edm::ParameterSet &params) :
 	}
 	
   //TESTING
-	h_JetPt = new TH1F("h_JetPt","h_JetPt",200,0,1200);
-	h_JetEta = new TH1F("h_JetEta","h_JetEta",200,-2.6,2.6);
+//	h_JetPt = new TH1F("h_JetPt","h_JetPt",200,0,1200);
+//	h_JetEta = new TH1F("h_JetEta","h_JetEta",200,-2.6,2.6);
 	
-	outfile = new TFile("JetTagMVATreeTrainer_outfile.root","RECREATE");
+//	outfile = new TFile("JetTagMVATreeTrainer_outfile.root","RECREATE");
 	
 	//for non-fit reweighting
 	TFile* infile_B = 0;
@@ -309,15 +309,15 @@ JetTagMVATreeTrainer::JetTagMVATreeTrainer(const edm::ParameterSet &params) :
 	histo_B_lin = (TH2D*) infile_B->Get("jets_lin");
 	histo_C_lin = (TH2D*) infile_C->Get("jets_lin");
 	histo_DUSG_lin = (TH2D*) infile_DUSG->Get("jets_lin");	
-	histo2D_B_reweighted_lin = new TH2D("h_2D_B_reweighted_lin","h_2D_B_reweighted_lin",50, -2.5, 2.5, 40, 15., 1000.);
-	histo2D_C_reweighted_lin = new TH2D("h_2D_C_reweighted_lin","h_2D_C_reweighted_lin",50, -2.5, 2.5, 40, 15., 1000.);
-	histo2D_DUSG_reweighted_lin = new TH2D("h_2D_DUSG_reweighted_lin","h_2D_DUSG_reweighted_lin",50, -2.5, 2.5, 40, 15., 1000.);
+//	histo2D_B_reweighted_lin = new TH2D("h_2D_B_reweighted_lin","h_2D_B_reweighted_lin",50, -2.5, 2.5, 40, 15., 1000.);
+//	histo2D_C_reweighted_lin = new TH2D("h_2D_C_reweighted_lin","h_2D_C_reweighted_lin",50, -2.5, 2.5, 40, 15., 1000.);
+//	histo2D_DUSG_reweighted_lin = new TH2D("h_2D_DUSG_reweighted_lin","h_2D_DUSG_reweighted_lin",50, -2.5, 2.5, 40, 15., 1000.);
 	
 }
 
 JetTagMVATreeTrainer::~JetTagMVATreeTrainer()
-{
-  outfile->cd();
+ {
+/*  outfile->cd();
 	std::cout<<"Writing histograms to files"<<std::endl;
 	h_JetPt->Write();
 	h_JetEta->Write();
@@ -327,7 +327,7 @@ JetTagMVATreeTrainer::~JetTagMVATreeTrainer()
 	histo2D_DUSG_reweighted_lin->Write();
 	
 	std::cout<<"Done."<<std::endl;
-	outfile->Close();
+	outfile->Close(); */
 }
 
 bool JetTagMVATreeTrainer::isSignalFlavour(int flavour) const
@@ -522,8 +522,8 @@ void JetTagMVATreeTrainer::analyze(const edm::Event& event,
 				}
 */				
 				
-				h_JetPt->Fill(jetPt);
-				h_JetEta->Fill(jetEta);
+//				h_JetPt->Fill(jetPt);
+//				h_JetEta->Fill(jetEta);
 	
 	      //non-fit reweighting: jet weight is inverse of bin content of the bin in which the jet resides in the 2D pt,eta histogram
 	      double weight = 1;
@@ -536,19 +536,19 @@ void JetTagMVATreeTrainer::analyze(const edm::Event& event,
 				
 				if(flavour == 5){
 					 weight = 1./bincontent_B_lin;
-					 histo2D_B_reweighted_lin->Fill(jetEta,jetPt,weight);
+//					 histo2D_B_reweighted_lin->Fill(jetEta,jetPt,weight);
 					//std::cout << "bincontent B: " << bincontent_B_lin << " so that weight is: " << weight << std::endl;
 				}
 				else if(flavour == 4)
 				{
 					 weight = 1./bincontent_C_lin;
-					 histo2D_C_reweighted_lin->Fill(jetEta,jetPt,weight);
+//					 histo2D_C_reweighted_lin->Fill(jetEta,jetPt,weight);
 					//std::cout << "bincontent C: " << bincontent_C_lin << " so that weight is: " << weight << std::endl;
 					}
 				else
 				{				   
 					 weight = 1./bincontent_DUSG_lin;
-					 histo2D_DUSG_reweighted_lin->Fill(jetEta,jetPt,weight);
+//					 histo2D_DUSG_reweighted_lin->Fill(jetEta,jetPt,weight);
 					//std::cout << "bincontent DUSG: " << bincontent_DUSG_lin << " so that weight is: " << weight << std::endl;
 				}
 				
