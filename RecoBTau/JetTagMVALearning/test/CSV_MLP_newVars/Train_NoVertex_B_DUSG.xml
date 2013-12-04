@@ -272,25 +272,26 @@
 	    <sigbkg size="500"/>
                         <bias_table><!--B_DUSG-->
 
-<bias>0.620018</bias>
-<bias>0.722834</bias>
-<bias>0.81909</bias>
-<bias>0.372935</bias>
-<bias>0.474489</bias>
-<bias>0.618482</bias>
-<bias>0.266502</bias>
-<bias>0.350997</bias>
-<bias>0.501304</bias>
-<bias>0.213604</bias>
-<bias>0.283177</bias>
-<bias>0.429494</bias>
-<bias>0.209531</bias>
-<bias>0.272039</bias>
-<bias>0.405353</bias>
-<bias>0.351513</bias>
-<bias>0.445515</bias>
-<bias>0.437349</bias>
-<bias>0.501377</bias>
+<bias>0.494679</bias>
+<bias>0.603949</bias>
+<bias>0.72725</bias>
+<bias>0.309296</bias>
+<bias>0.407488</bias>
+<bias>0.552474</bias>
+<bias>0.245273</bias>
+<bias>0.332774</bias>
+<bias>0.482552</bias>
+<bias>0.216049</bias>
+<bias>0.298596</bias>
+<bias>0.454424</bias>
+<bias>0.237576</bias>
+<bias>0.32552</bias>
+<bias>0.466442</bias>
+<bias>0.392945</bias>
+<bias>0.470504</bias>
+<bias>0.458261</bias>
+<bias>0.52488</bias>
+
 
                        </bias_table><!--B_DUSG-->
 		</config>

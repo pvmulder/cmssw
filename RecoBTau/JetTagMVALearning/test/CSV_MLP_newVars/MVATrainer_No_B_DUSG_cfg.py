@@ -22,8 +22,8 @@ process.combinedSVTrainer = cms.EDAnalyzer("JetTagMVATreeTrainer",
 	#weightThreshold = cms.untracked.double(0.1),
 
 	fileNames = cms.vstring(
-		" /user/pvmulder/NewEraOfDataAnalysis/BTagServiceWork/DEVELOPMENT/CMSSW_5_3_4_patch1/src/CrabJobs_modified1_tightTrackSel/RootFiles/QCD_training/skimmed_20k_eachptetabin_CombinedSVNoVertex_B.root",
-		" /user/pvmulder/NewEraOfDataAnalysis/BTagServiceWork/DEVELOPMENT/CMSSW_5_3_4_patch1/src/CrabJobs_modified1_tightTrackSel/RootFiles/QCD_training/skimmed_20k_eachptetabin_CombinedSVNoVertex_DUSG.root"
+		" /afs/cern.ch/work/p/pvmulder/public/BTagging/GIT_SETUP/TEST_RECIPE/CMSSW_5_3_13_patch3/src/RootFiles_CMSSW5313_gitrecipe/QCD/skimmed_20k_eachptetabin_CombinedSVNoVertex_B.root",
+		" /afs/cern.ch/work/p/pvmulder/public/BTagging/GIT_SETUP/TEST_RECIPE/CMSSW_5_3_13_patch3/src/RootFiles_CMSSW5313_gitrecipe/QCD/skimmed_20k_eachptetabin_CombinedSVNoVertex_DUSG.root"
 	),
 	weightFile = cms.string("weights/CombinedSVNoVertex_BDUSG_histo.txt"),
 	biasFiles = cms.vstring(

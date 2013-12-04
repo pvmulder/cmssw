@@ -12,7 +12,7 @@ echo "ADAPT BIASES IF NECESSARY!!!"
 
 answer=6
 
-path_to_rootfiles=/user/pvmulder/NewEraOfDataAnalysis/BTagServiceWork/DEVELOPMENT/CMSSW_5_3_4_patch1/src/CrabJobs_modified1_tightTrackSel/RootFiles/QCD_training/
+path_to_rootfiles=/afs/cern.ch/work/p/pvmulder/public/BTagging/GIT_SETUP/TEST_RECIPE/CMSSW_5_3_13_patch3/src/RootFiles_CMSSW5313_gitrecipe/QCD/
 Combinations="NoVertex_B_DUSG NoVertex_B_C PseudoVertex_B_DUSG PseudoVertex_B_C RecoVertex_B_DUSG RecoVertex_B_C"
 CAT="Reco Pseudo No"
 prefix="CombinedSV"

@@ -267,25 +267,27 @@
         	              <category count="19"/>
 	    <sigbkg size="500"/>
                         <bias_table><!--B_DUSG-->
-<bias>0.620018</bias>
-<bias>0.722834</bias>
-<bias>0.81909</bias>
-<bias>0.372935</bias>
-<bias>0.474489</bias>
-<bias>0.618482</bias>
-<bias>0.266502</bias>
-<bias>0.350997</bias>
-<bias>0.501304</bias>
-<bias>0.213604</bias>
-<bias>0.283177</bias>
-<bias>0.429494</bias>
-<bias>0.209531</bias>
-<bias>0.272039</bias>
-<bias>0.405353</bias>
-<bias>0.351513</bias>
-<bias>0.445515</bias>
-<bias>0.437349</bias>
-<bias>0.501377</bias>
+
+<bias>0.494679</bias>
+<bias>0.603949</bias>
+<bias>0.72725</bias>
+<bias>0.309296</bias>
+<bias>0.407488</bias>
+<bias>0.552474</bias>
+<bias>0.245273</bias>
+<bias>0.332774</bias>
+<bias>0.482552</bias>
+<bias>0.216049</bias>
+<bias>0.298596</bias>
+<bias>0.454424</bias>
+<bias>0.237576</bias>
+<bias>0.32552</bias>
+<bias>0.466442</bias>
+<bias>0.392945</bias>
+<bias>0.470504</bias>
+<bias>0.458261</bias>
+<bias>0.52488</bias>
+
 
                         </bias_table><!--B_DUSG-->
 		</config>
@@ -476,26 +478,27 @@
         	              <category count="19"/>
 	                      <sigbkg size="500"/>
                         <bias_table><!--B_C-->
-<bias>0.678106</bias>
-<bias>0.762154</bias>
-<bias>0.846402</bias>
-<bias>0.460744</bias>
-<bias>0.551705</bias>
-<bias>0.681001</bias>
-<bias>0.352753</bias>
-<bias>0.433681</bias>
-<bias>0.578274</bias>
-<bias>0.296914</bias>
-<bias>0.368922</bias>
-<bias>0.515695</bias>
-<bias>0.293942</bias>
-<bias>0.360256</bias>
-<bias>0.492885</bias>
-<bias>0.458013</bias>
-<bias>0.560398</bias>
-<bias>0.583208</bias>
-<bias>0.570946</bias>
 
+
+<bias>0.576543</bias>
+<bias>0.667669</bias>
+<bias>0.774572</bias>
+<bias>0.39703</bias>
+<bias>0.488367</bias>
+<bias>0.622579</bias>
+<bias>0.330996</bias>
+<bias>0.416634</bias>
+<bias>0.559358</bias>
+<bias>0.300747</bias>
+<bias>0.387464</bias>
+<bias>0.539248</bias>
+<bias>0.328385</bias>
+<bias>0.422979</bias>
+<bias>0.551453</bias>
+<bias>0.508926</bias>
+<bias>0.615143</bias>
+<bias>0.610848</bias>
+<bias>0.625801</bias>
 
                      </bias_table><!--B_C-->
 		</config>

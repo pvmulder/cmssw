@@ -327,26 +327,25 @@
         	              <category count="19"/>
 	     <sigbkg size="500"/>
        <bias_table><!--B_C-->
-<bias>4.5241</bias>
-<bias>5.33206</bias>
-<bias>5.36909</bias>
-<bias>3.34222</bias>
-<bias>3.66697</bias>
-<bias>3.8775</bias>
-<bias>3.0686</bias>
-<bias>3.33662</bias>
-<bias>3.49231</bias>
-<bias>2.89716</bias>
-<bias>3.01631</bias>
-<bias>3.17083</bias>
-<bias>2.86573</bias>
-<bias>2.85636</bias>
-<bias>2.90389</bias>
-<bias>2.89959</bias>
-<bias>2.56518</bias>
-<bias>2.8032</bias>
-<bias>3.08408</bias>
-
+<bias>3.54908</bias>
+<bias>3.96524</bias>
+<bias>4.05405</bias>
+<bias>3.14922</bias>
+<bias>3.43942</bias>
+<bias>3.61338</bias>
+<bias>2.96939</bias>
+<bias>3.19214</bias>
+<bias>3.37679</bias>
+<bias>2.85962</bias>
+<bias>2.96425</bias>
+<bias>3.07407</bias>
+<bias>2.86782</bias>
+<bias>2.82837</bias>
+<bias>2.95484</bias>
+<bias>2.84215</bias>
+<bias>2.40304</bias>
+<bias>2.59101</bias>
+<bias>2.85577</bias>
 
        </bias_table><!--B_C-->
 

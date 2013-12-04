@@ -314,26 +314,26 @@
         	              <category count="19"/>
 	                      <sigbkg size="500"/>
                         <bias_table><!--B_DUSG-->
-<bias>39.2271</bias>
-<bias>38.2331</bias>
-<bias>28.393</bias>
-<bias>8.61701</bias>
-<bias>8.26381</bias>
-<bias>6.38986</bias>
-<bias>5.38851</bias>
-<bias>4.89273</bias>
-<bias>3.52494</bias>
-<bias>4.39293</bias>
-<bias>3.8424</bias>
-<bias>2.45324</bias>
-<bias>3.74372</bias>
-<bias>2.88475</bias>
-<bias>1.94271</bias>
-<bias>2.73701</bias>
-<bias>2.19171</bias>
-<bias>2.28871</bias>
-<bias>2.11382</bias>
 
+<bias>15.9876</bias>
+<bias>18.3107</bias>
+<bias>16.2624</bias>
+<bias>7.78643</bias>
+<bias>8.47539</bias>
+<bias>7.54226</bias>
+<bias>5.6141</bias>
+<bias>5.74704</bias>
+<bias>4.94291</bias>
+<bias>4.69452</bias>
+<bias>4.3728</bias>
+<bias>3.1419</bias>
+<bias>3.79953</bias>
+<bias>3.16405</bias>
+<bias>2.72256</bias>
+<bias>2.81606</bias>
+<bias>3.21926</bias>
+<bias>2.57965</bias>
+<bias>3.32301</bias>
                         </bias_table><!--B_DUSG-->
 		</config>
 		<output>
