@@ -16,7 +16,7 @@ process.load("Configuration.Geometry.GeometryIdeal_cff") #new one
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
-process.GlobalTag.globaltag = cms.string("START53_V6::All")
+process.GlobalTag.globaltag = cms.string("START53_V26::All")
 
 ##To use the newest training!
 #process.load("CondCore.DBCommon.CondDBSetup_cfi")
