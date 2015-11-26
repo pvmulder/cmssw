@@ -64,6 +64,7 @@ from RecoBTag.SecondaryVertex.candidateCombinedSecondaryVertexSoftLeptonComputer
 from RecoBTag.CTagging.candidateCombinedSecondaryVertexSoftLeptonCvsLComputer_cfi import *
 from RecoBTag.SecondaryVertex.candidateBoostedDoubleSecondaryVertexAK8Computer_cfi import *
 from RecoBTag.SecondaryVertex.candidateBoostedDoubleSecondaryVertexCA15Computer_cfi import *
+from RecoBTag.SecondaryVertex.candidateGhostTrackComputer_cfi import *
 
 from RecoBTag.SecondaryVertex.pfSecondaryVertexTagInfos_cfi import *
 from RecoBTag.SecondaryVertex.pfSimpleSecondaryVertexHighEffBJetTags_cfi import *
@@ -78,6 +79,8 @@ from RecoBTag.SecondaryVertex.pfInclusiveSecondaryVertexFinderTagInfosAK8_cfi im
 from RecoBTag.SecondaryVertex.pfBoostedDoubleSecondaryVertexAK8BJetTags_cfi import *
 from RecoBTag.SecondaryVertex.pfInclusiveSecondaryVertexFinderTagInfosCA15_cfi import *
 from RecoBTag.SecondaryVertex.pfBoostedDoubleSecondaryVertexCA15BJetTags_cfi import *
+from RecoBTag.SecondaryVertex.pfGhostTrackVertexTagInfos_cfi import *
+from RecoBTag.SecondaryVertex.pfGhostTrackBJetTags_cfi import *
 
 # Negative taggers
 from RecoBTag.SecondaryVertex.pfSecondaryVertexNegativeTagInfos_cfi import *
