@@ -44,6 +44,10 @@ typedef GenericMVAJetTagComputerWrapper<CombinedSVSoftLeptonComputer,
 	reco::CandSoftLeptonTagInfo, elecTagInfos> CandidateCombinedSVSoftLeptonJetTagComputer;
 
 typedef GenericMVAJetTagComputerWrapper<GhostTrackComputer,
+	reco::CandIPTagInfo,         ipTagInfos,
+	reco::CandSecondaryVertexTagInfo, svTagInfos> CandidateGhostTrackJetTagComputer;
+
+typedef GenericMVAJetTagComputerWrapper<GhostTrackComputer,
 	reco::TrackIPTagInfo,         ipTagInfos,
 	reco::SecondaryVertexTagInfo, svTagInfos> GhostTrackJetTagComputer;
 
@@ -64,6 +68,9 @@ DEFINE_FWK_EVENTSETUP_MODULE(CandidateCombinedSecondaryVertexSoftLeptonESProduce
 
 typedef JetTagComputerESProducer<CombinedSVSoftLeptonJetTagComputer> CombinedSecondaryVertexSoftLeptonESProducer;
 DEFINE_FWK_EVENTSETUP_MODULE(CombinedSecondaryVertexSoftLeptonESProducer);
+
+typedef JetTagComputerESProducer<CandidateGhostTrackJetTagComputer> CandidateGhostTrackESProducer;
+DEFINE_FWK_EVENTSETUP_MODULE(CandidateGhostTrackESProducer);
 
 typedef JetTagComputerESProducer<GhostTrackJetTagComputer> GhostTrackESProducer;
 DEFINE_FWK_EVENTSETUP_MODULE(GhostTrackESProducer);

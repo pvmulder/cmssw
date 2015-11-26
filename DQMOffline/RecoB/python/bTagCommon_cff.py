@@ -13,6 +13,8 @@ from DQMOffline.RecoB.bTagSimpleSVAnalysis_cff import *
 from DQMOffline.RecoB.bTagSoftLeptonAnalysis_cff import *
 from DQMOffline.RecoB.bTagSoftLeptonByPtAnalysis_cff import *
 from DQMOffline.RecoB.bTagSoftLeptonByIPAnalysis_cff import *
+from DQMOffline.RecoB.bTagGhostTrackAnalysis_cff import *
+from DQMOffline.RecoB.bTagGhostTrackVariables_cff import *
 
 bTagCommonBlock = cms.PSet(
     # use pre-computed jet flavour identification
@@ -116,6 +118,20 @@ bTagCommonBlock = cms.PSet(
             bTagSoftLeptonAnalysisBlock,
             label = cms.InputTag("softPFElectronBJetTags"),
             folder = cms.string("SET")
+        ),
+        cms.PSet(
+            bTagGenericAnalysisBlock,
+            label = cms.InputTag("ghostTrackBJetTags"),
+            folder = cms.string("GT-tagger")
+        ),
+        cms.PSet(
+            bTagGhostTrackAnalysisBlock,
+            ipTagInfos = cms.InputTag("impactParameterTagInfos"),
+            type = cms.string('GenericMVA'),
+            svTagInfos = cms.InputTag("ghostTrackVertexTagInfos"),
+            label = cms.InputTag("ghostTrackComputer"),
+            folder = cms.string("GT_Tag")
+
         ),
     )    
 )
